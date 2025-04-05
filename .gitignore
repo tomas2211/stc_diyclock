@@ -12,3 +12,4 @@ config
 .vscode/extensions.json
 .vscode/settings.json
 .pio/build/*
+.venv/
