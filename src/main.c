@@ -127,14 +127,17 @@ inline void timerBlinkerSlow() {
   if (0 == previous_second) { // initial value
     previous_second = rtc_table[DS_ADDR_SECONDS];
   } else if (rtc_table[DS_ADDR_SECONDS] != previous_second) {
-    counter_blinker_slow = 1;
-    blinker_slow = 1;
+    if((rtc_table[DS_ADDR_SECONDS] % 2) == 0)  // blinker off on even seconds
+    {
+      counter_blinker_slow = 1;
+      blinker_slow = 0;
+    }
     previous_second = rtc_table[DS_ADDR_SECONDS];
   }
 
-  if (counter_blinker_slow == 5) { // 500 ms
+  if (counter_blinker_slow == 10) { // 1000 ms
     counter_blinker_slow = 0;
-    blinker_slow = !blinker_slow; // blink every 500ms
+    blinker_slow = !blinker_slow; // blink every 1000ms
   }
 }
 
@@ -367,11 +370,11 @@ inline void displayTime() {
   // Digits 0, 1
   if (!flash_01 || blinker_fast || S1_LONG) {
     uint8_t h0 = hh >> 4;
-#if !defined(WITHOUT_H12_24_SWITCH)
-    if (H12_12 && h0 == 0) {
+// #if !defined(WITHOUT_H12_24_SWITCH)
+    if (h0 == 0) {
       h0 = LED_BLANK;
     }
-#endif
+// #endif
     fillDigit(0, h0);
     fillDigit(1, hh & 0x0F);
   }
