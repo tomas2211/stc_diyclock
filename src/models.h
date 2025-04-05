@@ -38,15 +38,15 @@ This file defines configurations for clock models.
 
 #define HW_REVISION_A
 #define FOUR_DIGITS
-#define AUTO_SHOW_TEMPERATURE 
+// #define AUTO_SHOW_TEMPERATURE 
 #define WITHOUT_DATE
 #define WITHOUT_CHIME
 #define WITHOUT_ALARM
 #define WITHOUT_WEEKDAY
 #define WITHOUT_H12_24_SWITCH
 #define WITHOUT_INACTIVITY_TIMER
-#define WITH_NMEA_DEVICE_SWITCH
-#define MOVE_UART_PINS_TO_P3_6
+// #define WITH_NMEA_DEVICE_SWITCH
+// #define MOVE_UART_PINS_TO_P3_6
 
 #elif defined(MINIMAL_6)
 // 6 digits, HH:mm, all features are off
